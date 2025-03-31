@@ -1,6 +1,8 @@
 /*
-Martin Ramirez
-March 27 2025
+Martin Ramirez.
+March 27, 2025.
+Finished: March 31, 2025.
+Purpose:Create a program like D&D using super class.
 */
 import java.util.ArrayList;
 
@@ -13,7 +15,7 @@ public class Main {
         System.out.print(b1);
     }
 
-//super class character containing attributes for level and name.
+//Super class character containing attributes for character.
 }
 class Character{
     protected int level;
@@ -28,6 +30,10 @@ class Character{
     protected int armor;
     protected ArrayList<String> labels;
 
+/*
+-Resolves naming conflicts (this.).
+-Other attributes equal to roll() meaning a random number between 1-13 will be displayed.
+ */
     public Character(int level, String name){
         this.level = level;
         this.name = name;
@@ -41,6 +47,8 @@ class Character{
         this.armor = roll();
         this.labels = new ArrayList<String>();
     }
+
+//Default values for character Human.
     public Character(){
         this.level = 1;
         this.name = "Human";
@@ -55,36 +63,39 @@ class Character{
         this.labels = new ArrayList<String>();
     }
 
-    //Roll a random number 1-13.
+    //Rolls a random number 1-13.
     public int roll(){
         int randomNumber = (int)(Math.random()* 14) + 3;
-        System.out.print(randomNumber);
-        return 1;
+        return randomNumber;
     }
 
-    //adds labels to characters.
+    //Adds labels to characters.
     public void features(String feat){
         labels.add(feat);
     }
 
+//Used to display the attributes of characters and their values.
     public String toString() {
         return "Character:{" +
                 "level:" + level +
                 ", | name:'" + name + '\'' +
                 ", HP:" + hit_points +
                 ", AC:" + armor +
-                ", | STR:" + str +
+                ", | \nSTR:" + str +
                 ", | DEX:" + dex +
                 ", | CON:" + con +
-                ", | INT: " + intelligence +
+                ", |\n INT: " + intelligence +
                 ", | WIS: " + wis +
                 ", | CHA:" + rizz +
-                ", | FEATS:" + labels +
+                ", |\n FEATS:" + labels +
                 '}';
     }
 }
 
-//Another character, Barbarian with additional attributes.
+/*
+-Another character, Barbarian with additional feats (Rage & Unarmored Defense).
+-Barbarians also have increased strength & constitution compared to Human.
+ */
 class Barbarian extends Character{
 
     public Barbarian(int level, String name){
